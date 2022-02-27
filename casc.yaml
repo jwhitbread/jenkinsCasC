@@ -49,4 +49,4 @@ credentials:
           description: "Jenkins SSH Key for github"
           privateKeySource:
             directEntry:
-              privateKey: ${GITHUB_PRIV_KEY}
+              privateKey: ${GITHUB_PRIVATE_KEY}
