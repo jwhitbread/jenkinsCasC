@@ -1,0 +1,11 @@
+version: "3"
+services:
+  jenkins:
+    user: root
+    container_name: jenkins
+    image: jwhitbread/jenkins
+    restart: unless-stopped
+    ports:
+      - 8123:8080
+    volumes:
+      - ./jenkins:/var/jenkins_home/
