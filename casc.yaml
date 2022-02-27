@@ -46,6 +46,6 @@ credentials:
     - credentials:
       - usernamePassword:
           id: "d6e7a303-f337-41ce-bfb8-e88241b0842c"
-          password: ""
+          password: "password"
           scope: GLOBAL
           username: "jwhitbread"
