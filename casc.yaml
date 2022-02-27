@@ -14,13 +14,6 @@ jenkins:
       permissions:
         - "Overall/Administer:admin"
         - "Overall/Read:authenticated"
-  remotingSecurity:
-    enabled: true
-security:
-  queueItemAuthenticator:
-    authenticators:
-    - global:
-        strategy: triggeringUsersAuthorizationStrategy
 unclassified:
   location:
     url: http://jenkins.home:8080
@@ -45,7 +38,15 @@ credentials:
     domainCredentials:
     - credentials:
       - usernamePassword:
-          id: "d6e7a303-f337-41ce-bfb8-e88241b0842c"
+          id: "DockerHub"
           password: "password"
           scope: GLOBAL
           username: "jwhitbread"
+      - basicSSHUserPrivateKey:
+          scope: GLOBAL
+          id: jenkins-github-ssh
+          username: ${GITHUB_USERNAME}
+          description: "Jenkins SSH Key for github"
+          privateKeySource:
+            directEntry:
+              privateKey: ${GITHUB_PRIV_KEY}
