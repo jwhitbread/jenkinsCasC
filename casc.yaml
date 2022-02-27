@@ -1,15 +1,51 @@
 jenkins:
+  systemMessage: "All configuration for this controller is done as code (JCasC)"
   securityRealm:
     local:
       allowsSignup: false
       users:
-       - id: ${JENKINS_ADMIN_ID}
-         password: ${JENKINS_ADMIN_PASSWORD}
+      - id: ${JENKINS_ADMIN_ID}
+        password: ${JENKINS_ADMIN_PASSWORD}
+        properties:
+        - timezone:
+            timeZoneName: "Europe/London"
   authorizationStrategy:
     globalMatrix:
       permissions:
         - "Overall/Administer:admin"
         - "Overall/Read:authenticated"
+  remotingSecurity:
+    enabled: true
+security:
+  queueItemAuthenticator:
+    authenticators:
+    - global:
+        strategy: triggeringUsersAuthorizationStrategy
 unclassified:
   location:
-    url: http://jenkins.home:8123/
+    url: http://jenkins.home:8080
+jobs:
+    - script: >
+        pipelineJob("Seed or update all pipelines") {
+        definition {
+            cpsScm {
+                scm {
+                    git{
+                      remote {
+                        url("https://github.com/m-goos/jenkins-jobdsl-seedrepo-example.git")
+                      }
+                      branch("*/main")
+                    }
+                }
+            }
+          }
+        }
+credentials:
+  system:
+    domainCredentials:
+    - credentials:
+      - usernamePassword:
+          id: "d6e7a303-f337-41ce-bfb8-e88241b0842c"
+          password: ""
+          scope: GLOBAL
+          username: "jwhitbread"
