@@ -1,0 +1,61 @@
+pipeline{
+    agent any
+
+    options {
+        timeout(time: 5, unit: 'MINUTES')
+    }
+
+    environment{
+        JOB_DESCRIPTION="A master job for creating all other jobs."
+    }
+
+    stages{
+        stage("Generate jobs") {
+            steps {
+                script{
+                    currentBuild.rawBuild.project.description = JOB_DESCRIPTION
+                }
+                jobDsl ignoreExisting: false, sandbox: false,
+                    scriptText: '''
+                        def defaultConfig = [
+                            "url": "git@github.com:JordanW94/jenkins-pipelines.git",
+                            "credentialsId": "jenkins-github-ssh",
+                            "branch": "refs/heads/master",
+                        ]
+
+                        def jobs = [
+                            "Build-JMCreative-dev": [:],
+                        ]
+
+                        jobs.each { pipelineJobName, pipelineConfig ->
+                            def Config = defaultConfig + ["scriptPath": "Pipelines/\${ -> pipelineJobName}/Jenkinsfile"] + pipelineConfig
+
+                            pipelineJob(pipelineJobName) {
+                                definition {
+                                    cpsScm {
+                                        lightweight(true)
+                                        scriptPath(Config.scriptPath)
+                                        scm {
+                                            git {
+                                                remote {
+                                                    credentials(Config.credentialsId)
+                                                    url(Config.url)
+                                                }
+
+                                                branch(Config.branch)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }'''
+            }
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}

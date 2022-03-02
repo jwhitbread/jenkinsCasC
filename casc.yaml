@@ -19,15 +19,19 @@ unclassified:
     url: http://jenkins.home:8080
 jobs:
     - script: >
-        pipelineJob("Seed or update all pipelines") {
+        pipelineJob("Seed-Job-Or-Update-Pipelines") {
         definition {
             cpsScm {
+                lightweight(true)
+                scriptPath "Piplines/Seed-Job-Or-Update-Pipelines/Jenkinsfile"
                 scm {
                     git{
                       remote {
-                        url("https://github.com/m-goos/jenkins-jobdsl-seedrepo-example.git")
+                        credentials(jenkins-github-ssh)
+                        url("git@github.com:JordanW94/jenkinsCasC.git")
                       }
-                      branch("*/main")
+                      
+                      branch("refs/heads/main")
                     }
                 }
             }
