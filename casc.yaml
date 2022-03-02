@@ -23,7 +23,7 @@ jobs:
         definition {
             cpsScm {
                 lightweight(true)
-                scriptPath "Piplines/Seed-Job-Or-Update-Pipelines/Jenkinsfile"
+                scriptPath "Piplines/Seed-Job-Or-Update-Pipelines/Seed-Job-Or-Update-Pipelines.jenkinsfile"
                 scm {
                     git{
                       remote {
