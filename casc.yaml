@@ -14,6 +14,31 @@ jenkins:
       permissions:
         - "Overall/Administer:admin"
         - "Overall/Read:authenticated"
+security:
+  apiToken:
+    creationOfLegacyTokenEnabled: false
+    tokenGenerationOnCreationEnabled: false
+    usageStatisticsEnabled: true
+  globalJobDslSecurityConfiguration:
+    useScriptSecurity: true
+  scriptApproval:
+    approvedSignatures:
+      - "field hudson.model.Run project"
+      - "method hudson.model.AbstractItem setDescription java.lang.String"
+      - "method hudson.model.AbstractItem setDisplayName java.lang.String"
+      - "method hudson.model.Computer setTemporarilyOffline boolean hudson.slaves.OfflineCause"
+      - "method hudson.model.Node toComputer"
+      - "method io.jenkins.plugins.casc.ConfigurationAsCode configureWith java.util.List"
+      - "method jenkins.model.Jenkins getNode java.lang.String"
+      - "method org.jenkinsci.plugins.workflow.support.steps.build.RunWrapper getRawBuild"
+      - "new hudson.slaves.OfflineCause$ByCLI java.lang.String"
+      - "staticField java.lang.System err"
+      - "staticMethod io.jenkins.plugins.casc.ConfigurationAsCode get"
+      - "staticMethod io.jenkins.plugins.casc.yaml.YamlSource of java.lang.String"
+      - "staticMethod jenkins.model.Jenkins getInstance"
+      - "staticMethod org.codehaus.groovy.runtime.DefaultGroovyMethods replaceAll java.lang.String\
+        \ java.util.regex.Pattern java.lang.String"
+
 unclassified:
   location:
     url: http://jenkins.home:8080

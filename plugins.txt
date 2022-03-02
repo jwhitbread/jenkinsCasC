@@ -11,7 +11,7 @@ email-ext:latest
 git:latest
 github-branch-source:latest
 gradle:latest
-job-dsl:1.59
+job-dsl:latest
 ldap:latest
 mailer:latest
 matrix-auth:latest
