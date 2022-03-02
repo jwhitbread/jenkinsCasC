@@ -43,7 +43,7 @@ credentials:
     - credentials:
       - usernamePassword:
           id: "DockerHub"
-          password: "password"
+          password: ${DOCKERHUB_PASSWORD}
           scope: GLOBAL
           username: "jwhitbread"
       - basicSSHUserPrivateKey:
