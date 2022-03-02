@@ -27,7 +27,7 @@ jobs:
                 scm {
                     git{
                       remote {
-                        credentials(jenkins-github-ssh)
+                        credentials("jenkins-github-ssh")
                         url("git@github.com:JordanW94/jenkinsCasC.git")
                       }
                       
