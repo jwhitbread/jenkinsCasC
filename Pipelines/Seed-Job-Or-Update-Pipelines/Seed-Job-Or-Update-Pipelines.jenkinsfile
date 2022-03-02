@@ -12,6 +12,9 @@ pipeline{
     stages{
         stage("Generate jobs") {
             steps {
+                script{
+                    currentBuild.rawBuild.project.description = JOB_DESCRIPTION
+                }
                 jobDsl ignoreExisting: false, sandbox: false,
                     scriptText: '''
                         def defaultConfig = [
