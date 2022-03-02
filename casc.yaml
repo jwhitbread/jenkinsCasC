@@ -31,7 +31,7 @@ jobs:
                         url("https://github.com/JordanW94/jenkinsCasC.git")
                       }
                       
-                      branch("refs/heads/main")
+                      branch("refs/heads/master")
                     }
                 }
             }
