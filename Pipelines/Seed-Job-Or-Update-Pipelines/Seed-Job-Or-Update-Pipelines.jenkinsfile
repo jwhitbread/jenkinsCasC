@@ -26,6 +26,8 @@ pipeline{
                         def jobs = [
                             "Build-JMCreative-dev": [:],
 							"Build-JMCreative-prod": [:],
+							"Build-httpstatuses-dev": [:],
+							"Build-httpstatuses-prod": [:],
                         ]
 
                         jobs.each { pipelineJobName, pipelineConfig ->
