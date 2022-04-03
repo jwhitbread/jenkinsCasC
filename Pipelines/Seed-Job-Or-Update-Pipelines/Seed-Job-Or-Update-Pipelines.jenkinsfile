@@ -28,8 +28,8 @@ pipeline{
 			    "Build-JMCreative-prod": [:],
 			    "Build-httpstatuses-dev": [:],
 			    "Build-httpstatuses-prod": [:],
-			    "Buils-JMCreative-Links-dev": [:],
-			    "Buils-JMCreative-Links-prod": [:],
+			    "Build-JMCreative-Links-dev": [:],
+			    "Build-JMCreative-Links-prod": [:],
                         ]
 
                         jobs.each { pipelineJobName, pipelineConfig ->
