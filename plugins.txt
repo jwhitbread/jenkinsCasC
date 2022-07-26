@@ -15,6 +15,7 @@ job-dsl:latest
 ldap:latest
 mailer:latest
 matrix-auth:latest
+nodejs:1.5.1
 pam-auth:latest
 pipeline-github-lib:latest
 pipeline-stage-view:latest
