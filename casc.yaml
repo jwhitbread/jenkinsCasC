@@ -80,3 +80,20 @@ credentials:
           privateKeySource:
             directEntry:
               privateKey: ${GITHUB_PRIVATE_KEY}
+tool:
+  git:
+    installations:
+    - home: "git"
+      name: "Default"
+  mavenGlobalConfig:
+    globalSettingsProvider: "standard"
+    settingsProvider: "standard"
+  nodejs:
+    installations:
+    - name: "nodejs"
+      properties:
+      - installSource:
+          installers:
+          - nodeJSInstaller:
+              id: "14.20.0"
+              npmPackagesRefreshHours: 72
