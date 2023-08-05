@@ -18,7 +18,7 @@ pipeline{
                 jobDsl ignoreExisting: false, sandbox: false,
                     scriptText: '''
                         def defaultConfig = [
-                            "url": "https://github.com/JordanW94/jenkins-pipelines.git",
+                            "url": "https://github.com/jwhitbread/jenkins-pipelines.git",
                             "credentialsId": "jenkins-github-ssh",
                             "branch": "refs/heads/master",
                         ]
